@@ -1,4 +1,4 @@
-# my-project
+# uni-app微信小程序
 
 ## Project setup
 ```
@@ -7,12 +7,12 @@ npm install
 
 ### Compiles and hot-reloads for development
 ```
-npm run serve
+npm run dev:mp-weixin
 ```
 
 ### Compiles and minifies for production
 ```
-npm run build
+npm run build:mp-weixin
 ```
 
 ### Customize configuration
