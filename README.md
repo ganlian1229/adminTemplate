@@ -1,16 +1,12 @@
 # uni-app微信小程序
 
-## Project setup
-```
-npm install
-```
 
-### Compiles and hot-reloads for development
+### 运行
 ```
 npm run dev:mp-weixin
 ```
 
-### Compiles and minifies for production
+### 打包
 ```
 npm run build:mp-weixin
 ```
