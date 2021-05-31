@@ -16,6 +16,12 @@ import store from './store';
 import uView from "uview-ui";
 Vue.use(uView);
 
+//全局过滤器
+import filters from "./filters";
+for (let key in filters) {
+  Vue.filter(key, filters[key])
+}
+
 //把请求添加到全局
 Vue.prototype.$http = { post, multiPost };
 //把vuex定义成全局组件
