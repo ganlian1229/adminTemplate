@@ -19,12 +19,6 @@
 			}
 		},
 		{
-			"path": "pages/login/login",
-			"style": {
-				"navigationBarTitleText": "登录"
-			}
-		},
-		{
 			"path": "pages/choice/choice",
 			"style": {
 				"navigationBarTitleText": "在线选楼"
