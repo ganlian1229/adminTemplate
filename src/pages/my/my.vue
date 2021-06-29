@@ -14,12 +14,10 @@ export default {
       recommendedNum: 0,
     };
   },
-  onLoad() {
-
-  },
+  onLoad() {},
   onShow() {},
   methods: {
-      //获取用户信息
+    //获取用户信息
     getUserProfile() {
       let that = this;
       uni.getUserProfile({
@@ -28,6 +26,7 @@ export default {
           console.log(infoRes);
         },
       });
+    },
   },
 };
 </script>
