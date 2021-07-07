@@ -1,12 +1,11 @@
 //公用方法
-export default class publicFun {
-    static testFun(num) {
+export default class PublicFun {
+    static testFun (num) {
         console.log(num)
     }
 
     //深拷贝
-    static deepCopy(obj) {
-
+    static deepCopy (obj) {
         var o = obj instanceof Array ? [] : {};
         for (var k in obj) {
             var val = obj[k];
@@ -18,5 +17,7 @@ export default class publicFun {
         }
         return o;
     }
+
+
 
 }

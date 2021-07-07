@@ -3,7 +3,7 @@
   <view class="container container-index">
     <view>userNumber：{{ userNumber }}</view>
     <button @click="addUserIdFun()">userNumber+1</button>
-    <view>全局变量：{{ urlHeader }}</view>
+    <view>全局变量：{{ urlHeader | smallToBig }}</view>
     <button type="primary" @click="upload">选择文件</button>
   </view>
 </template>

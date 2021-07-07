@@ -1,5 +1,6 @@
 {
 	"pages": [
+		//
 		{
 			"path": "pages/index/index",
 			"style": {
@@ -24,6 +25,10 @@
 				"navigationBarTitleText": "在线选楼"
 			}
 		}
+
+
+		//
+
 	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",

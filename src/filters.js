@@ -1,4 +1,7 @@
 export default {
+
+
+
     //数字金额转化为大写
     smallToBig(n) {
         let unit = "仟佰拾亿仟佰拾万仟佰拾元角分",
@@ -44,5 +47,9 @@ export default {
                 .replace(/元$/g, "元整")
                 .replace(/角$/g, "角整"); // 替换掉数字里面的零字符，得到结果
         }
-    }
+    },
+    
+  
+
+
 }

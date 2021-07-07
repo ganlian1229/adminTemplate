@@ -14,6 +14,9 @@ const store = new Vuex.Store({
             state.userNumber = data;
         }
     },
-    actions: {}
+    actions: {},
+    modules:{
+        
+    }
 })
 export default store
