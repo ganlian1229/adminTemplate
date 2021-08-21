@@ -1,6 +1,8 @@
 {
+	"easycom": {
+		"^u-(.*)": "uview-ui/components/u-$1/u-$1.vue"
+	},
 	"pages": [
-		//
 		{
 			"path": "pages/index/index",
 			"style": {
@@ -25,10 +27,7 @@
 				"navigationBarTitleText": "在线选楼"
 			}
 		}
-
-
 		//
-
 	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
