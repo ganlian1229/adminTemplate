@@ -5,12 +5,17 @@
     <button @click="addUserIdFun()">userNumber+1</button>
     <view>全局变量：{{ urlHeader | smallToBig }}</view>
     <button type="primary" @click="upload">选择文件</button>
+    <testList :testList.sync="testList"></testList>
   </view>
 </template>
 
 <script>
 import { mapState, mapMutations } from "vuex";
+import testList from "@/pages/index/comp/testList";
 export default {
+  components: {
+    testList,
+  },
   computed: {
     ...mapState(["userNumber"]),
   },
@@ -18,26 +23,41 @@ export default {
     return {
       changeUserId: 0,
       urlHeader: "",
+      testList: [
+        {
+          isAct: false,
+          text: "1",
+        },
+        {
+          isAct: false,
+          text: "2",
+        },
+        {
+          isAct: false,
+          text: "3",
+        },
+      ],
     };
   },
   onLoad() {},
   onShow() {
     this.changeUserNumber = this.userNumber;
-    this.$public.testFun(789654);
+    this.$common.testFun(789654);
     this.urlHeader = this.$global.urlHeader;
-    this.getSwiperData();
   },
   methods: {
     ...mapMutations(["getUserNumber"]),
+    testClick(item) {
+      this.testList.forEach((ite) => {
+        ite.isAct = false;
+      });
+      item.isAct = true;
+    },
     addUserIdFun() {
       this.changeUserNumber++;
       this.getUserNumber(this.changeUserNumber);
     },
-    getSwiperData() {
-      this.$http.post("portalPost/findBanner", {}).then((res) => {
-        console.log(res);
-      });
-    },
+
     upload() {
       uni.showActionSheet({
         title: "选择上传类型",

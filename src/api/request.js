@@ -1,16 +1,21 @@
-
-
-
 let requestHeader = "http://www.fengyugo.com:8012/dxhrdcw/";
+let isSHowModal = true;
 //post请求方法
-export function post(url, params) {
+export async function post (url, params = {}) {
+    if (!params.isLonging) {
+        uni.showLoading({
+            title: '加载中'
+        });
+    }
+
     return new Promise((resolve, reject) => {
         uni.request({
             url: requestHeader + url,
             method: "POST",
             data: params,
             header: {
-                "content-type": "application/x-www-form-urlencoded"
+                "content-type": "application/x-www-form-urlencoded" //FROM
+                // "content-type": "application/json;charset=UTF-8" //JSON
             },
             success: res => {
                 // console.log(res.data.code)
@@ -30,13 +35,17 @@ export function post(url, params) {
                     icon: 'none'
                 });
                 reject(err)
+            },
+            complete: () => {
+                uni.hideLoading()
             }
         })
     });
 }
+
 //文件上传方法
 //url:上传的地址   filePath：图片地址   fileKey：后台给的文件名  params 其余参数（对象，不是FromData()对象）
-export function multiPost(url, filePath, fileKey, params) {
+export function multiPost (url, filePath, fileKey, params) {
     return new Promise((resolve, reject) => {
         uni.uploadFile({
             url: requestHeader + url,

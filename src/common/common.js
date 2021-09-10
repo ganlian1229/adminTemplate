@@ -1,10 +1,10 @@
 //公用方法
 export default class CommonFun {
-    static testFun(num) {
+    static testFun (num) {
         console.log(num)
     }
     //增强arr indexOf方法
-    static increaseArrIndexOf(arr, variable, value) {
+    static increaseArrIndexOf (arr, variable, value) {
         for (let i = 0; i < arr.length; i++) {
             if (arr[i][variable] == value) {
                 return i;
@@ -13,27 +13,30 @@ export default class CommonFun {
         return -1;
     }
     //深拷贝
-    static deepCopy(obj) {
-        var newobj = {}
-        //判断是否为null
-        if (obj === null) return null;
-        for (var key in obj) {
-            //判断数组
-            if ({}.toString.call(obj) === "[object Array]") {
-                var newarr = [];
-                newarr = obj.slice()
-                return newarr
+    static deepCopy (source) {
+        if (!source) return
+        let target;
+        if (typeof source === 'object') {
+            // 根据source类型判断是新建一个数组还是对象
+            target = Array.isArray(source) ? [] : {}
+            // 遍历source，并且判断是source的属性才拷贝
+            for (let key in source) {
+                if (source.hasOwnProperty(key)) {
+                    if (typeof source[key] !== 'object') {
+                        target[key] = source[key]
+                    } else {
+                        // 如果内部属性存在复杂数据类型，使用递归实现深拷贝
+                        target[key] = deepCopy(source[key])
+                    }
+                }
             }
-            if (typeof obj[key] !== "object") {
-                newobj[key] = obj[key]
-            } else {
-                newobj[key] = this.deepCopy(obj[key])
-            }
+        } else {
+            target = source
         }
-        return newobj
+        return target
     }
     //navigateBack返回带参数
-    static back(data, isRefresh = false, page = 1) {
+    static back (data, isRefresh = false, page = 1) {
         let pages = getCurrentPages();
         let prevPage = pages[pages.length - (page + 1)];
         if (this.isJSON(data)) {
@@ -53,7 +56,7 @@ export default class CommonFun {
         });
     }
     //是否是JSON
-    static isJSON(str) {
+    static isJSON (str) {
         if (typeof str == "string") {
             try {
                 var obj = JSON.parse(str);
