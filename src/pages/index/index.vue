@@ -6,6 +6,14 @@
     <view>全局变量：{{ urlHeader | smallToBig }}</view>
     <button type="primary" @click="upload">选择文件</button>
     <testList :testList.sync="testList"></testList>
+
+    <textarea
+      v-model="textareaValue"
+      placeholder="请输入"
+      style="width:100%;height:150rpx;"
+    ></textarea>
+    <button @click="setValue2()">设置</button>
+    <view v-html="textareaValue2"></view>
   </view>
 </template>
 
@@ -37,6 +45,8 @@ export default {
           text: "3",
         },
       ],
+      textareaValue: "",
+      textareaValue2: "",
     };
   },
   onLoad() {},
@@ -47,6 +57,22 @@ export default {
   },
   methods: {
     ...mapMutations(["getUserNumber"]),
+    setValue2() {
+      console.log(this.textareaValue);
+      this.textareaValue2 = this.textFormat(this.textareaValue);
+    },
+
+    textFormat(val) {
+      // 格式化文字展示文本域格式文字
+      if (val) {
+        console.log(val);
+        let newString = val.replace(/\n/g, "_@").replace(/\r/g, "_#");
+        newString = newString.replace(/_#_@/g, "<br/>"); // IE7-8
+        newString = newString.replace(/_@/g, "<br/>"); // IE9、FF、chrome
+        newString = newString.replace(/\s/g, "&nbsp;"); // 空格处理
+        return newString;
+      }
+    },
     testClick(item) {
       this.testList.forEach((ite) => {
         ite.isAct = false;
