@@ -1,7 +1,5 @@
 <template>
-    <view class="container service">
-        一键服务
-    </view>
+    <view class="container service"> 一键服务 </view>
 </template>
 <script>
 export default {
@@ -10,12 +8,10 @@ export default {
     },
     onLoad() {},
     onShow() {},
-    methods: {},
+    methods: {}
 };
 </script>
-<style lang="less">
-@bgimg: "~@/static/";
-.service{
-
+<style lang="scss">
+.service {
 }
 </style>

@@ -138,8 +138,7 @@ export default {
 };
 </script>
 
-<style lang="less">
-@bgimg: "~@/static/";
+<style lang="scss">
 .container-index {
 }
 </style>

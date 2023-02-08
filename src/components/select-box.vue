@@ -1,22 +1,12 @@
 <template>
     <view class="com-selectBox">
-        <view
-            class="com-sContent"
-            :class="isSelectFillet ? 'com-ysContent' : ''"
-            @click="selectToggle"
-        >
+        <view class="com-sContent" :class="isSelectFillet ? 'com-ysContent' : ''" @click="selectToggle">
             <view class="com-sTxt">{{ nowText }}</view>
             <view class="com-sImg" :animation="animationData"></view>
             <!-- <image src='../static/down.png' class='com-sImg' ></image> -->
         </view>
         <view class="com-sList" v-if="selectShow">
-            <view
-                v-for="(item, index) in propArray"
-                :key="index"
-                class="com-sItem"
-                @click="setText(index)"
-                >{{ item.text }}</view
-            >
+            <view v-for="(item, index) in propArray" :key="index" class="com-sItem" @click="setText(index)">{{ item.text }}</view>
         </view>
     </view>
 </template>
@@ -24,35 +14,35 @@
 export default {
     props: {
         propArray: {
-            type: Array,
+            type: Array
         },
         isFillet: {
             //是否是圆角（uni-app开发  可忽略 自己去引入的页面定义样式）
             type: Boolean,
-            default: false,
+            default: false
         },
         propNowText: {
             //没有默认选着时显示的文字
             type: String,
-            default: "请选择",
+            default: '请选择'
         },
         isDefault: {
             //是否有默认选着项
             type: Boolean,
-            default: false,
+            default: false
         },
         actIndex: {
             //默认选着第几项
             type: Number,
-            default: 0,
-        },
+            default: 0
+        }
     },
     data() {
         return {
             selectShow: false, //初始option不显示
-            nowText: "请选择",
+            nowText: '请选择',
             animationData: {}, //右边箭头的动画
-            isSelectFillet: false, //是否是圆角
+            isSelectFillet: false //是否是圆角
         };
     },
     mounted() {
@@ -71,7 +61,7 @@ export default {
             var nowShow = this.selectShow; //获取当前option显示的状态
             //创建动画
             var animation = uni.createAnimation({
-                timingFunction: "ease",
+                timingFunction: 'ease'
             });
             this.animation = animation;
             if (nowShow) {
@@ -96,15 +86,15 @@ export default {
             // console.log(111)
             // let nowDataObj = JSON.stringify(nowData[nowIdx]);
             // console.log(nowData[nowIdx]);
-            this.$emit("change", nowData[nowIdx]);
+            this.$emit('change', nowData[nowIdx]);
             // this.$parent.switchFun(nowDataObj);
-        },
-    },
+        }
+    }
 };
 </script>
 
-<style lang="less">
-@bgimg: "~@/static/";
+<style lang="scss">
+$bgimg: '~@/static/';
 .com-selectBox {
     width: 100%;
 }
@@ -124,7 +114,7 @@ export default {
     top: 11px;
     width: 16px;
     height: 9px;
-    background: url("@{bgimg}icon-down.png") no-repeat;
+    background: url($bgimg + 'icon-down.png') no-repeat;
     background-size: 100% 100%;
     transition: all 0.3s ease;
 }
